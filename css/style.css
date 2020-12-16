@@ -589,6 +589,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 0;
 }
 .questions__back * {
+  transition: fill 0.2s linear;
   fill: rgba(255, 255, 255, 0.1);
 }
 .questions__title {
