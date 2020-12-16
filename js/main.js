@@ -31,18 +31,30 @@ svgs.forEach(svg => {
         }
     })
 
+    for (let i = 0; i < pathsX.length; i++) {
+        setTimeout(() => {
+            paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.3)';
+        }, 100 * pathsX[i].turn)
+        setTimeout(() => {
+            paths[pathsX[i].id].style.fill = '';
+        }, 100 * pathsX[i].turn + 1000)
+    }
+
     setInterval(() => {
         for (let i = 0; i < pathsX.length; i++) {
             setTimeout(() => {
                 paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.3)';
-            }, 50 * pathsX[i].turn)
+            }, 100 * pathsX[i].turn)
             setTimeout(() => {
                 paths[pathsX[i].id].style.fill = '';
-            }, 50 * pathsX[i].turn + 500)
+            }, 100 * pathsX[i].turn + 1000)
         }
-    }, 20 * columns + 1000)
+    }, 40 * columns + 1000)
 
-    /*setInterval(() => {
+    /*
+    * поочередно слева направо меняет цвет кружкам
+
+    setInterval(() => {
         for (let i = 0; i < pathsX.length; i++) {
             setTimeout(() => {
                 paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.4)';
