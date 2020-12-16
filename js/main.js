@@ -34,11 +34,11 @@ svgs.forEach(svg => {
     setInterval(() => {
         for (let i = 0; i < pathsX.length; i++) {
             setTimeout(() => {
-                paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.4)';
+                paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.3)';
             }, 50 * pathsX[i].turn)
             setTimeout(() => {
                 paths[pathsX[i].id].style.fill = '';
-            }, 50 * pathsX[i].turn + 1000)
+            }, 50 * pathsX[i].turn + 500)
         }
     }, 20 * columns + 1000)
 
