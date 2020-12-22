@@ -238,6 +238,8 @@ if ($('.popup-map-bg').length) {
 
 //подробнее об услуге
 
+let mustBeClosed = false;
+
 if ($('.services__types').length) {
     let serviceTypesBlock = document.querySelector('.services__types');
     let serviceTypes = serviceTypesBlock.querySelectorAll('.services__type');
@@ -255,16 +257,22 @@ if ($('.services__types').length) {
 
         popupServiceOpenBtn.addEventListener('click', () => {
             popupServiceBackground.classList.add('popup-service-bg-visible');
+            document.querySelector('.header-sticky').style.top = '-100%';
+            mustBeClosed = true;
         });
 
         popupServiceBackground.addEventListener('click', (event) => {
             if (event.target === popupServiceBackground) {
                 popupServiceBackground.classList.remove('popup-service-bg-visible');
+                _scroll('.header-sticky', 'slideDown', '-100%');
+                mustBeClosed = false;
             }
         });
 
         popupServiceCloseBtn.addEventListener('click', () => {
             popupServiceBackground.classList.remove('popup-service-bg-visible');
+            _scroll('.header-sticky', 'slideDown', '-100%');
+            mustBeClosed = false;
         });
     })
 }
@@ -370,7 +378,9 @@ function _scroll(block, b, c){
 }
 
 function myScroll() {
-    _scroll('.header-sticky', 'slideDown', '-100%');
+    if (!mustBeClosed) {
+        _scroll('.header-sticky', 'slideDown', '-100%');
+    }
 }
 
 //faq block
@@ -419,7 +429,7 @@ if ($('.faq').length) {
     })
 
     for (let i = 0; i < services.length; i++) {
-        services[i].addEventListener('click', () => {
+        services[i].addEventListener('mouseup', () => {
             indexOfActiveService = i;
             if (circles[indexOfActiveCircle]) {
                 circles[indexOfActiveCircle].classList.remove('faq__circle-active');
@@ -469,6 +479,9 @@ if ($('.faq').length) {
         })
     }
 }
+
+// подгрузка картинок в грузах при нажатии "смотреть еще"
+
 
 //карусель-слайдер на странице услуги
 
