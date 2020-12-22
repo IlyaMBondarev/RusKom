@@ -1,8 +1,11 @@
 
 document.querySelector('.wrapper').classList.add('loaded');
 
+const isMobile = window.navigator.userAgent.match(/Mobile/) && window.navigator.userAgent.match(/Mobile/)[0] === "Mobile";
+
 // анимация svg под формой
-if ($('.svg-animation__back').length) {
+
+if ($('.svg-animation__back').length && isMobile) {
     let svgs = document.querySelectorAll('.svg-animation__back');
     let width = document.documentElement.offsetWidth;
 
@@ -52,7 +55,7 @@ if ($('.svg-animation__back').length) {
         }, 50 * columns + 1000)
 
         /*
-        * поочередно слева направо меняет цвет кружкам
+        * другая анимация - поочередно слева направо меняет цвет кружкам
 
         setInterval(() => {
             for (let i = 0; i < pathsX.length; i++) {
@@ -92,7 +95,7 @@ function carToMove(direction, styleElement, car) {
     return direction;
 }
 
-if ($('.about')) {
+if ($('.about').length && isMobile) {
     let carsBlock = document.querySelector('.about__cars');
     let carsToRight = carsBlock.querySelectorAll('.toRight');
     let carsToLeft = carsBlock.querySelectorAll('.toLeft');
@@ -120,9 +123,11 @@ if ($('.about')) {
             }, 10000)
         }, Math.random() * 3000)
     }
+}
 
-    //кнопка развернуть в блоке о компании
+//кнопка развернуть в блоке о компании
 
+if ($('.about').length) {
     let aboutContent = document.querySelector('.about__content');
     let aboutBtn = document.querySelector('.about__more');
 
@@ -310,6 +315,14 @@ function formValidate(form) {
     return error;
 }
 
+let questionForms = document.querySelectorAll('.questions__form');
+questionForms.forEach(form => {
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        formSend(form);
+    });
+})
+
 //phone mask
 
 function mask(event) {
@@ -429,7 +442,7 @@ if ($('.faq').length) {
     })
 
     for (let i = 0; i < services.length; i++) {
-        services[i].addEventListener('mouseup', () => {
+        services[i].addEventListener('click', () => {
             indexOfActiveService = i;
             if (circles[indexOfActiveCircle]) {
                 circles[indexOfActiveCircle].classList.remove('faq__circle-active');
@@ -496,6 +509,17 @@ $(document).ready(function() {
                 swipe: true,
                 nav: false,
                 dots: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    680: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    },
+                }
             });
 
             $('.services .services__next').click(function () {
