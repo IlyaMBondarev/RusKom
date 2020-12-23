@@ -628,18 +628,6 @@ $(document).ready(function() {
                     owl.trigger('to.owl.carousel', [i+4]);
                 });
             }
-
-            let oldwidth = document.documentElement.clientWidth;
-
-            document.addEventListener('resize', () => {
-                if (document.documentElement.clientWidth > 767) {
-                    let faqItems = document.querySelector('.faq__items');
-                    while (faqItems.firstChild) {
-                        faqItems.removeChild(faqItems.firstChild);
-                    }
-                    items.forEach(item => faqItems.appendChild(item));
-                }
-            })
         }
     }
 });
