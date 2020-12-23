@@ -5,7 +5,7 @@ const isMobile = window.navigator.userAgent.match(/Mobile/) && window.navigator.
 
 // анимация svg под формой
 
-if ($('.svg-animation__back').length && isMobile) {
+if ($('.svg-animation__back').length && document.documentElement.clientWidth > 767) {
     let svgs = document.querySelectorAll('.svg-animation__back');
     let width = document.documentElement.offsetWidth;
 
@@ -95,7 +95,7 @@ function carToMove(direction, styleElement, car) {
     return direction;
 }
 
-if ($('.about').length && isMobile) {
+if ($('.about').length && document.documentElement.clientWidth > 1199.999) {
     let carsBlock = document.querySelector('.about__cars');
     let carsToRight = carsBlock.querySelectorAll('.toRight');
     let carsToLeft = carsBlock.querySelectorAll('.toLeft');
@@ -410,11 +410,13 @@ if ($('.faq').length) {
     let indexOfActiveCircle = 0;
     let numberOfItems = services.length - 1;
     let servicesBlockMarginTop = 0;
+    let countingStep = document.documentElement.clientWidth > 1100 ? 151 :
+        document.documentElement.clientWidth > 767 ? 128 : 90;
 
     arrowUp.addEventListener('click', () => {
         if (indexOfTopVisibleService !== 0) {
             indexOfTopVisibleService--;
-            servicesBlockMarginTop += 151;
+            servicesBlockMarginTop += countingStep;
             servicesBlock.style.marginTop = `${servicesBlockMarginTop}px`;
             if (circles[indexOfActiveCircle]) {
                 circles[indexOfActiveCircle].classList.remove('faq__circle-active');
@@ -429,7 +431,7 @@ if ($('.faq').length) {
     arrowDown.addEventListener('click', () => {
         if (indexOfTopVisibleService !== numberOfItems - 3) {
             indexOfTopVisibleService++;
-            servicesBlockMarginTop -= 151;
+            servicesBlockMarginTop -= countingStep;
             servicesBlock.style.marginTop = `${servicesBlockMarginTop}px`;
             if (circles[indexOfActiveCircle]) {
                 circles[indexOfActiveCircle].classList.remove('faq__circle-active');
@@ -529,6 +531,13 @@ $(document).ready(function() {
             $('.services .services__prev').click(function () {
                 owl.trigger('prev.owl.carousel', [300]);
             });
+            let items = $('.services .services__item');
+
+            for (let i = 0; i < items.length; i++) {
+                items[i].addEventListener('click', function () {
+                    owl.trigger('to.owl.carousel', [i/2]);
+                });
+            }
         }
     }
 });
