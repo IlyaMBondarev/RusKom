@@ -130,101 +130,54 @@ if ($('.rain-bg').length && document.documentElement.clientWidth > 1199.999) {
     let rainBlocks = document.querySelectorAll('.rain-bg');
     rainBlocks.forEach(rainBlock => {
         let rows = rainBlock.querySelectorAll('.rain__row');
-        let cities = ['Смоленск', 'Москва', 'Казань', 'Екатеринбург', '', '', ''];
-        let currentRow = -1;
+        let cities = ['Смоленск', 'Москва', 'Казань', 'Екатеринбург'];
 
-        setInterval(() => {
-            let span = document.createElement('span');
-
-            let randomSpanContent = cities[Math.floor(Math.random() * 8)];
-
-            if (randomSpanContent === '') {
-                span.classList.add('rain__empty');
-            } else {
-                span.classList.add('rain__text');
-                span.textContent = `Новороссийск - ${randomSpanContent}`;
-            }
-
-            let randomRow = Math.floor(Math.random() * rows.length);
-
-            while (randomRow === currentRow) {
-                randomRow = Math.floor(Math.random() * rows.length);
-            }
-
-            currentRow = randomRow;
-
-            rows[randomRow].appendChild(span);
-
-            span.style.transition = `right ${50/(randomRow+5)}s linear`;
-
-            setTimeout(() => span.style.right = '150%', 40);
+        for(let i = 0; i < rows.length; i++) {
 
             setTimeout(() => {
-                span.parentNode.removeChild(span);
-            }, 10000)
-        }, Math.random() * 250 + 500)
+                let span = document.createElement('span');
+                let emptySpan = document.createElement('span');
 
+                let randomSpanContent = cities[Math.floor(Math.random() * cities.length)];
 
-        /* setTimeout(() => {
-                let spans = rows[i].querySelectorAll('span');
+                span.classList.add('rain__text');
+                emptySpan.classList.add('rain__empty');
+                span.textContent = `Новороссийск - ${randomSpanContent}`;
+                span.appendChild(emptySpan);
 
-                let randomNumber = Math.floor(Math.random() * 3);
-                let speed = Math.floor(Math.random() * 4) + 3;
+                rows[i].appendChild(span);
 
-                if (randomNumber === 0) {
-                    spans[0].style.transition = `right ${36/speed}s linear 0s`;
-                    spans[1].style.transition = `right ${36/speed}s linear 2s`;
-                    spans[2].style.transition = `right ${36/speed}s linear 4s`;
-                } else if (randomNumber === 1) {
-                    spans[0].style.transition = `right ${36/speed}s linear 4s`;
-                    spans[1].style.transition = `right ${36/speed}s linear 0s`;
-                    spans[2].style.transition = `right ${36/speed}s linear 2s`;
-                } else {
-                    spans[0].style.transition = `right ${36/speed}s linear 2s`;
-                    spans[1].style.transition = `right ${36/speed}s linear 4s`;
-                    spans[2].style.transition = `right ${36/speed}s linear 0s`;
-                }
+                span.style.transition = `right 10s linear`;
 
-                for (let j = 0; j < spans.length; j++) {
-                    spans[j].style.right = '150%';
-                }
+                setTimeout(() => span.style.right = '80%', 40);
 
                 setTimeout(() => {
-                    for (let j = 0; j < spans.length; j++) {
-                        spans[j].style.transition = '';
-                        spans[j].style.right = '';
-                    }
-                }, (36000 / speed) + 2000)
-                setInterval(() => {
+                    span.parentNode.removeChild(span);
+                }, i * 1000 + 9999)
+            }, i * 1000)
 
-                    if (randomNumber === 0) {
-                        spans[0].style.transition = `right ${36/speed}s linear 0s`;
-                        spans[1].style.transition = `right ${36/speed}s linear 1s`;
-                        spans[2].style.transition = `right ${36/speed}s linear 2s`;
-                    } else if (randomNumber === 1) {
-                        spans[0].style.transition = `right ${36/speed}s linear 2s`;
-                        spans[1].style.transition = `right ${36/speed}s linear 0s`;
-                        spans[2].style.transition = `right ${36/speed}s linear 1s`;
-                    } else {
-                        spans[0].style.transition = `right ${36/speed}s linear 1s`;
-                        spans[1].style.transition = `right ${36/speed}s linear 2s`;
-                        spans[2].style.transition = `right ${36/speed}s linear 0s`;
-                    }
+            setInterval(() => {
+                let span = document.createElement('span');
+                let emptySpan = document.createElement('span');
 
-                    for (let j = 0; j < spans.length; j++) {
-                        spans[j].style.right = '150%';
-                    }
+                let randomSpanContent = cities[Math.floor(Math.random() * cities.length)];
 
-                    setTimeout(() => {
-                        for (let j = 0; j < spans.length; j++) {
-                            spans[j].style.transition = '';
-                            spans[j].style.right = '';
-                        }
-                    }, (36000 / speed) + 2000)
+                span.classList.add('rain__text');
+                emptySpan.classList.add('rain__empty');
+                span.textContent = `Новороссийск - ${randomSpanContent}`;
+                span.appendChild(emptySpan);
 
-                }, (Math.random() * 1000) + (36000 / speed) + 2000)
+                rows[i].appendChild(span);
 
-            }, Math.random() * 400 + 100 * i)*/
+                span.style.transition = `right 10s linear`;
+
+                setTimeout(() => span.style.right = '80%', 40);
+
+                setTimeout(() => {
+                    span.parentNode.removeChild(span);
+                }, i * 1000 + 9999)
+            }, i * 1000 + 10000)
+        }
 
     })
 }

@@ -327,7 +327,8 @@ input:checked + .slide-container .nav label {
 .rain__text {
   position: absolute;
   color: #ffffff;
-  right: -50%;
+  font-size: 12px;
+  right: -22%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -339,7 +340,7 @@ input:checked + .slide-container .nav label {
   box-shadow: 0.6px 0.8px 3px 0 #000000;
   background-color: #ffffff;
   position: absolute;
-  right: -50%;
+  left: -63px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -1189,7 +1190,7 @@ h1, h2, h3, h4, h5, h6 {
 .popup-service__block input {
   padding: 18px 23px;
   border-radius: 28.9px;
-  box-shadow: 6.3px 9px 32px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 3px 5.2px 7px 0 rgba(0, 0, 0, 0.26);
   background-color: #ffffff;
   font-size: 17.5px;
   color: #000000;
