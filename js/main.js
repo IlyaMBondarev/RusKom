@@ -653,6 +653,7 @@ $(document).ready(function() {
                 swipe: true,
                 nav: false,
                 dots: false,
+                stagePadding: 30,
                 responsive: {
                     0: {
                         items: 1
