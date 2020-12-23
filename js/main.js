@@ -71,23 +71,23 @@ if ($('.svg-animation__back').length && document.documentElement.clientWidth > 7
 // горизонтально едущие машины
 
 function carToMove(direction, styleElement, car) {
-    if (direction >= 125) {
-        direction = Math.random() * 50 - 75;
+    if (direction >= 100) {
+        direction = -230;
         car.style.transition = `${styleElement} 0s linear`;
         if (styleElement === 'left') {
-            car.style.left = `${direction}%`;
+            car.style.left = `${direction}px`;
         } else if (styleElement === 'right') {
-            car.style.right = `${direction}%`;
+            car.style.right = `${direction}px`;
         }
         setTimeout(() => {
             car.style.transition = '';
         }, 40)
     } else {
-        direction += 250;
+        direction = 610;
         if (styleElement === 'left') {
-            car.style.left = `${direction}%`;
+            car.style.left = `${direction}px`;
         } else if (styleElement === 'right') {
-            car.style.right = `${direction}%`;
+            car.style.right = `${direction}px`;
         }
     }
     return direction;
@@ -99,27 +99,27 @@ if ($('.about').length && document.documentElement.clientWidth > 1199.999) {
     let carsToLeft = carsBlock.querySelectorAll('.toLeft');
 
     for (let i = 0; i < carsToRight.length; i++) {
-        let left = Math.random() * 50 - 75;
-        carsToRight[i].style.left = `${left}%`;
+        let left = -230;
+        carsToRight[i].style.left = `${left}px`;
         carsToRight[i].style.opacity = `1`;
         setTimeout(() => {
             left = carToMove(left, 'left', carsToRight[i]);
             setInterval(() => {
                 left = carToMove(left, 'left', carsToRight[i]);
-            }, 10000)
-        }, Math.random() * 3000)
+            }, 6000)
+        }, Math.random() * 15000)
     }
 
     for (let i = carsToLeft.length - 1; i >= 0; i--) {
-        let right = Math.random() * 50 - 75;
-        carsToLeft[i].style.right = `${right}%`;
+        let right = -230;
+        carsToLeft[i].style.right = `${right}px`;
         carsToLeft[i].style.opacity = `1`;
         setTimeout(() => {
             right = carToMove(right, 'right', carsToLeft[i]);
             setInterval(() => {
                 right = carToMove(right, 'right', carsToLeft[i]);
-            }, 10000)
-        }, Math.random() * 3000)
+            }, 6000)
+        }, Math.random() * 15000)
     }
 }
 
@@ -239,11 +239,12 @@ if ($('.about').length) {
         if (aboutContent.classList.contains('opened')) {
             aboutContent.style.maxHeight = '';
             aboutBtn.textContent = 'Развернуть';
+            aboutBtn.classList.remove('about__less');
             aboutContent.classList.remove('opened');
         } else {
             aboutContent.style.maxHeight = `${aboutContent.scrollHeight + 20}px`;
             aboutBtn.textContent = 'Свернуть';
-            aboutBtn
+            aboutBtn.classList.add('about__less');
             aboutContent.classList.add('opened');
         }
     })
@@ -597,10 +598,6 @@ if ($('.faq').length) {
         })
     }
 }
-
-// подгрузка картинок в грузах при нажатии "смотреть еще"
-
-
 //карусель-слайдер на странице услуги
 
 $(document).ready(function() {
@@ -610,6 +607,7 @@ $(document).ready(function() {
             owl.owlCarousel({
                 items: 3,
                 margin: 15,
+                loop: true,
                 mouseDrag: false,
                 swipe: true,
                 nav: false,
@@ -638,9 +636,56 @@ $(document).ready(function() {
 
             for (let i = 0; i < items.length; i++) {
                 items[i].addEventListener('click', function () {
-                    owl.trigger('to.owl.carousel', [i/2]);
+                    document.querySelector('.services').querySelectorAll('.services__item-active').forEach(activeItem => activeItem.classList.remove('services__item-active'));
+                    items[i].classList.add('services__item-active');
+                    owl.trigger('to.owl.carousel', [i+4]);
                 });
             }
+        }
+    }
+    if ($('.faq').length && document.documentElement.clientWidth <= 767) {
+        let owl = $('.faq .owl-carousel');
+        if (owl.length) {
+            owl.owlCarousel({
+                items: 3,
+                margin: 15,
+                loop: true,
+                swipe: true,
+                nav: false,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    450: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                }
+            });
+            let items = $('.faq .faq__item');
+
+            for (let i = 0; i < items.length; i++) {
+                items[i].addEventListener('click', function () {
+                    document.querySelector('.faq').querySelectorAll('.faq__item-active').forEach(activeItem => activeItem.classList.remove('faq__item-active'));
+                    items[i].classList.add('faq__item-active');
+                    owl.trigger('to.owl.carousel', [i+4]);
+                });
+            }
+
+            let oldwidth = document.documentElement.clientWidth;
+
+            document.addEventListener('resize', () => {
+                if (document.documentElement.clientWidth > 767) {
+                    let faqItems = document.querySelector('.faq__items');
+                    while (faqItems.firstChild) {
+                        faqItems.removeChild(faqItems.firstChild);
+                    }
+                    items.forEach(item => faqItems.appendChild(item));
+                }
+            })
         }
     }
 });
