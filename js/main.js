@@ -600,7 +600,6 @@ $(document).ready(function() {
         let owl = $('.faq .owl-carousel');
         if (owl.length) {
             owl.owlCarousel({
-                items: 3,
                 margin: 15,
                 loop: true,
                 swipe: true,
