@@ -1,8 +1,6 @@
 
 document.querySelector('.wrapper').classList.add('loaded');
 
-const isMobile = window.navigator.userAgent.match(/Mobile/) && window.navigator.userAgent.match(/Mobile/)[0] === "Mobile";
-
 // анимация svg под формой
 
 if ($('.svg-animation__back').length && document.documentElement.clientWidth > 767) {
@@ -125,6 +123,112 @@ if ($('.about').length && document.documentElement.clientWidth > 1199.999) {
     }
 }
 
+// вертикально едущие машины
+
+
+if ($('.rain-bg').length && document.documentElement.clientWidth > 1199.999) {
+    let rainBlocks = document.querySelectorAll('.rain-bg');
+    rainBlocks.forEach(rainBlock => {
+        let rows = rainBlock.querySelectorAll('.rain__row');
+        let cities = ['Смоленск', 'Москва', 'Казань', 'Екатеринбург', '', '', ''];
+        let currentRow = -1;
+
+        setInterval(() => {
+            let span = document.createElement('span');
+
+            let randomSpanContent = cities[Math.floor(Math.random() * 8)];
+
+            if (randomSpanContent === '') {
+                span.classList.add('rain__empty');
+            } else {
+                span.classList.add('rain__text');
+                span.textContent = `Новороссийск - ${randomSpanContent}`;
+            }
+
+            let randomRow = Math.floor(Math.random() * rows.length);
+
+            while (randomRow === currentRow) {
+                randomRow = Math.floor(Math.random() * rows.length);
+            }
+
+            currentRow = randomRow;
+
+            rows[randomRow].appendChild(span);
+
+            span.style.transition = `right ${50/(randomRow+5)}s linear`;
+
+            setTimeout(() => span.style.right = '150%', 40);
+
+            setTimeout(() => {
+                span.parentNode.removeChild(span);
+            }, 10000)
+        }, Math.random() * 250 + 500)
+
+
+        /* setTimeout(() => {
+                let spans = rows[i].querySelectorAll('span');
+
+                let randomNumber = Math.floor(Math.random() * 3);
+                let speed = Math.floor(Math.random() * 4) + 3;
+
+                if (randomNumber === 0) {
+                    spans[0].style.transition = `right ${36/speed}s linear 0s`;
+                    spans[1].style.transition = `right ${36/speed}s linear 2s`;
+                    spans[2].style.transition = `right ${36/speed}s linear 4s`;
+                } else if (randomNumber === 1) {
+                    spans[0].style.transition = `right ${36/speed}s linear 4s`;
+                    spans[1].style.transition = `right ${36/speed}s linear 0s`;
+                    spans[2].style.transition = `right ${36/speed}s linear 2s`;
+                } else {
+                    spans[0].style.transition = `right ${36/speed}s linear 2s`;
+                    spans[1].style.transition = `right ${36/speed}s linear 4s`;
+                    spans[2].style.transition = `right ${36/speed}s linear 0s`;
+                }
+
+                for (let j = 0; j < spans.length; j++) {
+                    spans[j].style.right = '150%';
+                }
+
+                setTimeout(() => {
+                    for (let j = 0; j < spans.length; j++) {
+                        spans[j].style.transition = '';
+                        spans[j].style.right = '';
+                    }
+                }, (36000 / speed) + 2000)
+                setInterval(() => {
+
+                    if (randomNumber === 0) {
+                        spans[0].style.transition = `right ${36/speed}s linear 0s`;
+                        spans[1].style.transition = `right ${36/speed}s linear 1s`;
+                        spans[2].style.transition = `right ${36/speed}s linear 2s`;
+                    } else if (randomNumber === 1) {
+                        spans[0].style.transition = `right ${36/speed}s linear 2s`;
+                        spans[1].style.transition = `right ${36/speed}s linear 0s`;
+                        spans[2].style.transition = `right ${36/speed}s linear 1s`;
+                    } else {
+                        spans[0].style.transition = `right ${36/speed}s linear 1s`;
+                        spans[1].style.transition = `right ${36/speed}s linear 2s`;
+                        spans[2].style.transition = `right ${36/speed}s linear 0s`;
+                    }
+
+                    for (let j = 0; j < spans.length; j++) {
+                        spans[j].style.right = '150%';
+                    }
+
+                    setTimeout(() => {
+                        for (let j = 0; j < spans.length; j++) {
+                            spans[j].style.transition = '';
+                            spans[j].style.right = '';
+                        }
+                    }, (36000 / speed) + 2000)
+
+                }, (Math.random() * 1000) + (36000 / speed) + 2000)
+
+            }, Math.random() * 400 + 100 * i)*/
+
+    })
+}
+
 //кнопка развернуть в блоке о компании
 
 if ($('.about').length) {
@@ -139,6 +243,7 @@ if ($('.about').length) {
         } else {
             aboutContent.style.maxHeight = `${aboutContent.scrollHeight + 20}px`;
             aboutBtn.textContent = 'Свернуть';
+            aboutBtn
             aboutContent.classList.add('opened');
         }
     })
@@ -189,7 +294,6 @@ if ($('.popup-callback-bg').length) {
 
     let popupCallbackBackground = document.querySelector('.popup-callback-bg');
     let popupCallbackOpenBtns = document.querySelectorAll('.popup-callback-open-btn');
-    let popupCallback = popupCallbackBackground.querySelector('.popup-callback');
     let popupCallbackCloseBtn = popupCallbackBackground.querySelector('.popup-callback__close');
     const popupCallbackForm = document.getElementById('popupCallbackForm');
 
@@ -221,7 +325,6 @@ if ($('.popup-map-bg').length) {
 
     let popupMapBackground = document.querySelector('.popup-map-bg');
     let popupMapOpenBtns = document.querySelectorAll('.popup-map-open-btn');
-    let popupMap = popupMapBackground.querySelector('.popup-map');
     let popupMapCloseBtn = popupMapBackground.querySelector('.popup-map__close');
 
     popupMapOpenBtns.forEach(button => {
