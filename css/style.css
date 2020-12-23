@@ -3364,6 +3364,11 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   transition: margin-top 0.4s ease;
 }
+@media (max-width: 767px) {
+  .faq__items {
+    display: block;
+  }
+}
 .faq__item {
   max-height: 123px;
   height: 123px;
@@ -3465,14 +3470,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (max-width: 767px) {
   .faq__item {
-    max-width: none;
+    max-width: initial;
     width: auto;
     max-height: 70px;
     height: 70px;
     margin-bottom: 20px;
   }
   .faq__item label {
-    max-width: none;
+    max-width: initial;
     width: auto;
     justify-content: center;
     max-height: 70px;
