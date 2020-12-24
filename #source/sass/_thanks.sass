@@ -2,12 +2,16 @@
   background-image: linear-gradient(to right, #5f75af 0%, #213467 40%, #213467 60%, #5f75af 100%)
   flex-grow: 1
   padding-top: 100px
+  padding-bottom: 40px
   display: flex
   flex-direction: column
   &__main
     flex-grow: 1
     width: 100%
     position: relative
+    min-height: 620px
+    @media (max-width: 1023px)
+      min-height: auto
     @media (max-width: 900px)
       display: flex
       flex-direction: column
@@ -67,5 +71,3 @@
     background-color: $red
     border-radius: 22px
     box-shadow: 5.2px 7.4px 8px 0 rgba(0, 0, 0, 0.35)
-    @media (max-width: 900px)
-      margin-bottom: 40px

@@ -557,14 +557,19 @@ if ($('.faq').length) {
 
     let items = $('.faq .faq__item');
     let questionsBlocks = faq.querySelectorAll('.faq__right');
-    let activeItem = 0;
 
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('click', function () {
             faq.querySelectorAll('.faq__item-active').forEach(activeItem => activeItem.classList.remove('faq__item-active'));
             faq.querySelectorAll('.faq__right-active').forEach(activeItem => activeItem.classList.remove('faq__right-active'));
             items[i].classList.add('faq__item-active');
-            questionsBlocks[i].classList.add('faq__right-active');
+            for (let j = 0; j < questionsBlocks.length; j++) {
+                if (items[i].dataset.number === questionsBlocks[j].dataset.number) {
+                    questionsBlocks[j].classList.add('faq__right-active');
+                    break;
+                }
+            }
+
             let questions = questionsBlocks[i].querySelectorAll('.faq__question');
             ps[i] = new PerfectScrollbar(questionsBlocks[i], {
                 wheelSpeed: 1,
@@ -687,9 +692,6 @@ $(document).ready(function() {
                     },
                     450: {
                         items: 2
-                    },
-                    600: {
-                        items: 3
                     },
                 }
             });

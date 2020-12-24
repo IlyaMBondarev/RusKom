@@ -60,9 +60,6 @@ $(document).ready(function() {
                     450: {
                         items: 2
                     },
-                    600: {
-                        items: 3
-                    },
                 }
             });
             let items = $('.faq .faq__item');
