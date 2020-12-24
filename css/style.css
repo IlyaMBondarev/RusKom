@@ -1962,12 +1962,12 @@ h1, h2, h3, h4, h5, h6 {
           user-select: none;
   transition: transform 0.2s linear;
 }
-.traffic__info svg {
+.traffic__info svg, .traffic__info img {
   position: relative;
   z-index: 5;
   height: 110px;
 }
-.traffic__info svg * {
+.traffic__info svg *, .traffic__info img * {
   fill: #172755;
 }
 .traffic__name {
@@ -3278,7 +3278,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-grow: 1;
     margin-bottom: 40px;
     max-width: none;
-    width: auto;
+    width: 100%;
   }
 }
 .faq__arrows {
@@ -3352,11 +3352,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 767px) {
   .faq__slider {
     max-height: 275px;
-  }
-}
-@media (max-width: 400px) {
-  .faq__slider {
-    padding-right: 20px;
+    padding-right: 0;
   }
 }
 .faq__items {
