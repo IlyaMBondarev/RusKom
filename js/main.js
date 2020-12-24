@@ -222,6 +222,17 @@ if ($('.about').length) {
     })
 }
 
+//изменение цвета у кнопок в faq
+
+let items = $('.faq .faq__item');
+
+for (let i = 0; i < items.length; i++) {
+    items[i].addEventListener('click', function () {
+        document.querySelector('.faq').querySelectorAll('.faq__item-active').forEach(activeItem => activeItem.classList.remove('faq__item-active'));
+        items[i].classList.add('faq__item-active');
+    });
+}
+
 //бургер
 
 function openBurger(burger) {
@@ -643,8 +654,6 @@ $(document).ready(function() {
 
             for (let i = 0; i < items.length; i++) {
                 items[i].addEventListener('click', function () {
-                    document.querySelector('.faq').querySelectorAll('.faq__item-active').forEach(activeItem => activeItem.classList.remove('faq__item-active'));
-                    items[i].classList.add('faq__item-active');
                     owl.trigger('to.owl.carousel', [i+4]);
                 });
             }
