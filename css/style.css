@@ -567,13 +567,13 @@ h1, h2, h3, h4, h5, h6 {
 .header__social-link:last-of-type:after {
   display: none;
 }
-.header__social-link > svg {
+.header__social-link > svg, .header__social-link > img {
   height: 20px;
   width: 20px;
   margin-right: 7px;
   transition: transform 0.2s linear;
 }
-.header__social-link > svg * {
+.header__social-link > svg *, .header__social-link > img * {
   fill: #ffffff;
 }
 .header__social-link > span {
@@ -601,10 +601,12 @@ h1, h2, h3, h4, h5, h6 {
 .header__mobile-social-link {
   margin-left: 10px;
 }
-.header__mobile-social-link > svg {
+.header__mobile-social-link > svg, .header__mobile-social-link > img {
   max-height: 20px;
   min-width: 20px;
   max-width: 20px;
+  height: 20px;
+  width: 20px;
 }
 .header__phone {
   font-family: "fontTitlesBlack";
@@ -657,12 +659,12 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   background-color: transparent;
 }
-.burger__close svg {
+.burger__close svg, .burger__close img {
   width: 14px;
   height: 14px;
   transition: all 0.2s linear;
 }
-.burger__close svg * {
+.burger__close svg *, .burger__close img * {
   transition: all 0.2s linear;
   fill: #6a6c74;
 }
@@ -691,14 +693,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 25px;
   white-space: normal;
 }
-.burger__phone svg {
+.burger__phone svg, .burger__phone img {
   width: 22px;
   height: 22px;
   min-width: 22px;
   min-height: 22px;
   margin-right: 6px;
 }
-.burger__phone svg * {
+.burger__phone svg *, .burger__phone img * {
   fill: #ee1d23;
 }
 .burger__phone span {
@@ -713,14 +715,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 25px;
   white-space: normal;
 }
-.burger__mail svg {
+.burger__mail svg, .burger__mail img {
   width: 22px;
   height: 22px;
   min-width: 22px;
   min-height: 22px;
   margin-right: 6px;
 }
-.burger__mail svg * {
+.burger__mail svg *, .burger__mail img * {
   fill: #ee1d23;
 }
 .burger__mail span {
@@ -732,14 +734,14 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   white-space: normal;
 }
-.burger__address svg {
+.burger__address svg, .burger__address img {
   width: 22px;
   height: 22px;
   min-width: 22px;
   min-height: 22px;
   margin-right: 6px;
 }
-.burger__address svg * {
+.burger__address svg *, .burger__address img * {
   fill: #ee1d23;
 }
 .burger__address span {
@@ -817,12 +819,12 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   background-color: transparent;
 }
-.popup-callback__close svg {
+.popup-callback__close svg, .popup-callback__close img {
   width: 14px;
   height: 14px;
   transition: all 0.2s linear;
 }
-.popup-callback__close svg * {
+.popup-callback__close svg *, .popup-callback__close img * {
   transition: all 0.2s linear;
   fill: #6a6c74;
 }
@@ -909,10 +911,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
 }
-.popup-callback__error > div svg {
+.popup-callback__error > div svg, .popup-callback__error > div img {
   height: 18px;
+  width: 18px;
 }
-.popup-callback__error > div svg * {
+.popup-callback__error > div svg *, .popup-callback__error > div img * {
   fill: #ffffff;
 }
 .popup-callback__error > span {
@@ -982,12 +985,12 @@ h1, h2, h3, h4, h5, h6 {
   right: 10px;
   z-index: 1000;
 }
-.popup-map__close svg {
+.popup-map__close svg, .popup-map__close img {
   width: 28px;
   height: 28px;
   transition: all 0.2s linear;
 }
-.popup-map__close svg * {
+.popup-map__close svg *, .popup-map__close img * {
   transition: all 0.2s linear;
   fill: #6a6c74;
 }
@@ -1072,12 +1075,12 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   background-color: transparent;
 }
-.popup-service__close svg {
+.popup-service__close svg, .popup-service__close img {
   width: 19px;
   height: 19px;
   transition: all 0.2s linear;
 }
-.popup-service__close svg * {
+.popup-service__close svg *, .popup-service__close img * {
   transition: all 0.2s linear;
   fill: #6a6c74;
 }
@@ -1254,10 +1257,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
 }
-.popup-service__error > div svg {
+.popup-service__error > div svg, .popup-service__error > div img {
   height: 18px;
+  width: 18px;
 }
-.popup-service__error > div svg * {
+.popup-service__error > div svg *, .popup-service__error > div img * {
   fill: #ffffff;
 }
 .popup-service__error > span {
@@ -1441,13 +1445,14 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
 }
-.footer__address svg {
+.footer__address svg, .footer__address img {
   min-width: 25px;
   max-width: 25px;
   height: 25px;
+  width: 25px;
   margin-right: 6px;
 }
-.footer__address svg * {
+.footer__address svg *, .footer__address img * {
   fill: #172755;
 }
 .footer__address span {
@@ -1469,13 +1474,14 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
 }
-.footer__mail svg {
+.footer__mail svg, .footer__mail img {
   min-width: 25px;
   max-width: 25px;
   height: 25px;
+  width: 25px;
   margin-right: 6px;
 }
-.footer__mail svg * {
+.footer__mail svg *, .footer__mail img * {
   fill: #172755;
 }
 .footer__mail span {
@@ -1491,13 +1497,14 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
 }
-.footer__phone svg {
+.footer__phone svg, .footer__phone img {
   min-width: 25px;
   max-width: 25px;
   height: 25px;
+  width: 25px;
   margin-right: 6px;
 }
-.footer__phone svg * {
+.footer__phone svg *, .footer__phone img * {
   fill: #172755;
 }
 .footer__phone span {
@@ -2214,10 +2221,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
 }
-.questions__error > div svg {
+.questions__error > div svg, .questions__error > div img {
   height: 18px;
+  width: 18px;
 }
-.questions__error > div svg * {
+.questions__error > div svg *, .questions__error > div img * {
   fill: #ffffff;
 }
 .questions__error > span {
@@ -2335,12 +2343,13 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   white-space: nowrap;
 }
-.about__car > svg {
+.about__car > svg, .about__car > img {
+  height: 48px;
   width: 48px;
   position: relative;
   z-index: 1;
 }
-.about__car > svg * {
+.about__car > svg *, .about__car > img * {
   fill: #212121;
 }
 .about__car.toRight {
@@ -3020,7 +3029,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   z-index: 0;
 }
-.services__back * {
+.services__back svg, .services__back img {
+  width: 100%;
+}
+.services__back svg *, .services__back img * {
   transition: fill 0.2s linear;
   fill: rgba(0, 0, 0, 0.1);
 }

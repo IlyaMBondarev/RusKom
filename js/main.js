@@ -1,6 +1,25 @@
 
 document.querySelector('.wrapper').classList.add('loaded');
 
+//замена img-svg на svg
+
+$('img.img-svg').each(function(){
+    let $img = $(this);
+    let imgClass = $img.attr('class');
+    let imgURL = $img.attr('src');
+    $.get(imgURL, function(data) {
+        let $svg = $(data).find('svg');
+        if(typeof imgClass !== 'undefined') {
+            $svg = $svg.attr('class', imgClass+' replaced-svg');
+        }
+        $svg = $svg.removeAttr('xmlns:a');
+        if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+            $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+        }
+        $img.replaceWith($svg);
+    }, 'xml');
+});
+
 // анимация svg под формой
 
 if ($('.svg-animation__back').length && document.documentElement.clientWidth > 767) {
@@ -552,24 +571,7 @@ if ($('.faq').length) {
     }
 }
 
-//замена img-svg на svg
 
-$('img.img-svg').each(function(){
-    let $img = $(this);
-    let imgClass = $img.attr('class');
-    let imgURL = $img.attr('src');
-    $.get(imgURL, function(data) {
-        let $svg = $(data).find('svg');
-        if(typeof imgClass !== 'undefined') {
-            $svg = $svg.attr('class', imgClass+' replaced-svg');
-        }
-        $svg = $svg.removeAttr('xmlns:a');
-        if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
-            $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
-        }
-        $img.replaceWith($svg);
-    }, 'xml');
-});
 //карусель-слайдер на странице услуги
 
 $(document).ready(function() {
