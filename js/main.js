@@ -201,6 +201,28 @@ if ($('.rain-bg').length && document.documentElement.clientWidth > 1199.999) {
     })
 }
 
+//кнопка смотреть еще в грузах
+
+if ($('.traffic').length) {
+    let traffics = document.querySelectorAll('.traffic');
+    traffics.forEach(traffic => {
+        let blocks = traffic.querySelector('.traffic__blocks');
+        let button = traffic.querySelector('.traffic__more');
+        let blockHeight = (blocks.clientHeight + 20) / 2;
+        let blocksHeight = blocks.clientHeight;
+        if (blocksHeight >= blocks.scrollHeight - 20) {
+            button.style.display = 'none';
+        }
+        button.addEventListener('click', () => {
+            blocksHeight += blockHeight;
+            blocks.style.maxHeight = `${blocksHeight}px`;
+            if (blocksHeight >= blocks.scrollHeight - 20) {
+                button.style.display = 'none';
+            }
+        })
+    })
+}
+
 //кнопка развернуть в блоке о компании
 
 if ($('.about').length) {
@@ -220,17 +242,6 @@ if ($('.about').length) {
             aboutContent.classList.add('opened');
         }
     })
-}
-
-//изменение цвета у кнопок в faq
-
-let items = $('.faq .faq__item');
-
-for (let i = 0; i < items.length; i++) {
-    items[i].addEventListener('click', function () {
-        document.querySelector('.faq').querySelectorAll('.faq__item-active').forEach(activeItem => activeItem.classList.remove('faq__item-active'));
-        items[i].classList.add('faq__item-active');
-    });
 }
 
 //бургер
@@ -543,42 +554,74 @@ if ($('.faq').length) {
         })
     }
 
-    let questionsBlock = faq.querySelector('.faq__right');
-    let questions = questionsBlock.querySelectorAll('.faq__question');
-    let indexOfActiveQuestion = 0;
 
-    const ps = new PerfectScrollbar(questionsBlock, {
-        wheelSpeed: 1,
-        wheelPropagation: false,
-        minScrollbarLength: 20,
-        maxScrollbarLength: 20
-    });
+    let items = $('.faq .faq__item');
+    let questionsBlocks = faq.querySelectorAll('.faq__right');
+    let activeItem = 0;
 
-    for (let indexOfQuestion = 0; indexOfQuestion < questions.length; indexOfQuestion++) {
-        let title = questions[indexOfQuestion].querySelector('.faq__question-title');
-        let content = questions[indexOfQuestion].querySelector('.faq__question-content');
-        let contentHeight = content.scrollHeight;
-        if (indexOfQuestion === indexOfActiveQuestion) {
-            questions[indexOfQuestion].classList.add('faq__question-active');
-            content.style.maxHeight = `${contentHeight}px`;
-            setTimeout(() => {ps.update();}, 450);
-        }
-        title.addEventListener('click', () => {
-            if (indexOfQuestion !== indexOfActiveQuestion) {
-                questions[indexOfQuestion].classList.add('faq__question-active');
-                content.style.maxHeight = `${contentHeight}px`;
-                if (indexOfActiveQuestion !== -1) {
-                    questions[indexOfActiveQuestion].classList.remove('faq__question-active');
-                    questions[indexOfActiveQuestion].querySelector('.faq__question-content').style.maxHeight = '';
+    for (let i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', function () {
+            faq.querySelectorAll('.faq__item-active').forEach(activeItem => activeItem.classList.remove('faq__item-active'));
+            faq.querySelectorAll('.faq__right-active').forEach(activeItem => activeItem.classList.remove('faq__right-active'));
+            items[i].classList.add('faq__item-active');
+            questionsBlocks[i].classList.add('faq__right-active');
+            let questions = questionsBlocks[i].querySelectorAll('.faq__question');
+            ps[i] = new PerfectScrollbar(questionsBlocks[i], {
+                wheelSpeed: 1,
+                wheelPropagation: false,
+                minScrollbarLength: 20,
+                maxScrollbarLength: 20
+            });
+            for (let indexOfQuestion = 0; indexOfQuestion < questions.length; indexOfQuestion++) {
+                let content = questions[indexOfQuestion].querySelector('.faq__question-content');
+                let contentHeight = content.scrollHeight;
+                if (questions[indexOfQuestion].classList.contains('faq__question-active')) {
+                    content.style.maxHeight = `${contentHeight}px`;
+                    setTimeout(() => {ps[i].update();}, 450);
                 }
-                indexOfActiveQuestion = indexOfQuestion;
-            } else {
-                questions[indexOfQuestion].classList.remove('faq__question-active');
-                questions[indexOfQuestion].querySelector('.faq__question-content').style.maxHeight = '';
-                indexOfActiveQuestion = -1;
             }
-            setTimeout(() => {ps.update();}, 450);
-        })
+        });
+    }
+
+    let ps = [];
+
+    for (let i = 0; i < questionsBlocks.length; i++) {
+        let questions = questionsBlocks[i].querySelectorAll('.faq__question');
+        let indexOfActiveQuestion = 0;
+
+        ps[i] = new PerfectScrollbar(questionsBlocks[i], {
+            wheelSpeed: 1,
+            wheelPropagation: false,
+            minScrollbarLength: 20,
+            maxScrollbarLength: 20
+        });
+
+        for (let indexOfQuestion = 0; indexOfQuestion < questions.length; indexOfQuestion++) {
+            let title = questions[indexOfQuestion].querySelector('.faq__question-title');
+            let content = questions[indexOfQuestion].querySelector('.faq__question-content');
+            let contentHeight = content.scrollHeight;
+            if (questions[indexOfQuestion].classList.contains('faq__question-active')) {
+                content.style.maxHeight = `${contentHeight}px`;
+                setTimeout(() => {ps[i].update();}, 450);
+            }
+            title.addEventListener('click', () => {
+                contentHeight = content.scrollHeight;
+                if (indexOfQuestion !== indexOfActiveQuestion) {
+                    questions[indexOfQuestion].classList.add('faq__question-active');
+                    content.style.maxHeight = `${contentHeight}px`;
+                    if (indexOfActiveQuestion !== -1) {
+                        questions[indexOfActiveQuestion].classList.remove('faq__question-active');
+                        questions[indexOfActiveQuestion].querySelector('.faq__question-content').style.maxHeight = '';
+                    }
+                    indexOfActiveQuestion = indexOfQuestion;
+                } else {
+                    questions[indexOfQuestion].classList.remove('faq__question-active');
+                    questions[indexOfQuestion].querySelector('.faq__question-content').style.maxHeight = '';
+                    indexOfActiveQuestion = -1;
+                }
+                setTimeout(() => {ps[i].update();}, 450);
+            })
+        }
     }
 }
 

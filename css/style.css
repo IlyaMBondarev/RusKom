@@ -1869,7 +1869,7 @@ h1, h2, h3, h4, h5, h6 {
 .traffic {
   padding-top: 60px;
   padding-bottom: 60px;
-  background: url("../img/bg_2.png") bottom/cover no-repeat;
+  background: url("../img/bg_2.png") bottom/contain no-repeat;
 }
 @media (max-width: 600px) {
   .traffic {
@@ -1902,6 +1902,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 10px;
+  padding-right: 50px;
+  margin-right: -50px;
+  max-height: 730px;
+  overflow: visible hidden;
+  transition: max-height 0.8s ease;
 }
 @media (max-width: 800px) {
   .traffic__blocks {
@@ -1934,7 +1939,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 22px 14px 30px 24px;
   border-radius: 0 10px 10px 0;
   border-left: 4px solid #ee1d23;
-  box-shadow: 5.5px 9.5px 32px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 5.5px 9.5px 10px 0 rgba(0, 0, 0, 0.26);
   background-color: #ffffff;
   overflow: hidden;
 }
@@ -3569,6 +3574,10 @@ h1, h2, h3, h4, h5, h6 {
   max-height: 425px;
   overflow: hidden;
   position: relative;
+  display: none;
+}
+.faq__right-active {
+  display: block;
 }
 @media (max-width: 1100px) {
   .faq__right {
