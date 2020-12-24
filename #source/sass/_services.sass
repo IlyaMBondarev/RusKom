@@ -1,0 +1,314 @@
+.services
+  position: relative
+  z-index: 51
+  &__title
+    margin-bottom: 12px
+    font-size: 5rem
+    line-height: 100%
+    color: #2c2c2c
+    font-family: $blackTitles
+    text-transform: uppercase
+    @media (max-width: 550px)
+      font-size: 4rem
+      line-height: 5.05rem
+    @media (max-width: 400px)
+      font-size: 3rem
+      line-height: 4.05rem
+  &__arrows
+    display: flex
+    justify-content: flex-end
+    @media (max-width: 767px)
+      display: none
+  &__prev
+    height: 35px
+    width: 33px
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #f3f4f4
+    border-radius: 10px 0 0 10px
+    transition: all 0.2s linear
+    & span
+      display: block
+      height: 14px
+      width: 14px
+      transition: border 0.2s linear
+      border-left: 1px solid #64676b
+      border-bottom: 1px solid #64676b
+      transform: rotate(45deg) translate(25%, -25%)
+    &:hover
+      background-color: $blue
+      & span
+        border-left: 1px solid $white
+        border-bottom: 1px solid $white
+  &__next
+    height: 35px
+    width: 33px
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #f3f4f4
+    border-radius: 0 10px 10px 0
+    margin-left: 7px
+    & span
+      display: block
+      height: 14px
+      width: 14px
+      border-left: 1px solid #64676b
+      border-bottom: 1px solid #64676b
+      transform: rotate(-135deg) translate(25%, -25%)
+    &:hover
+      background-color: $blue
+      & span
+        border-left: 1px solid $white
+        border-bottom: 1px solid $white
+  &__items
+    margin-top: -12px
+    padding: 24px 96px 49px 12px
+    display: flex
+    justify-content: flex-start
+    overflow: hidden
+    & .owl-stage-outer
+      overflow: visible !important
+    @media (max-width: 550px)
+      padding-bottom: 30px
+    @media (max-width: 400px)
+      padding-right: 60px
+  &__item
+    margin-right: 15px
+    min-width: 270px
+    height: 80px
+    border-radius: 10px
+    box-shadow: 3px 5.2px 7px 0 rgba(0, 0, 0, 0.26)
+    color: $black
+    font-size: 17px
+    line-height: 21.5px
+    cursor: pointer
+    &:last-of-type
+      margin-right: 0
+    &-active
+      & label
+        background: $gradient !important
+        color: $white !important
+        & svg *
+          fill: $white !important
+    & input
+      display: none
+      &:checked + label
+        background: $gradient
+        color: $white
+        & svg *
+          fill: $white
+    & label
+      cursor: pointer
+      padding-right: 10px
+      height: 80px
+      border-radius: 10px
+      background: $white
+      transition: all 0.3s linear
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      & svg, & img
+        max-height: 53px !important
+        min-width: 53px
+        max-width: 53px
+        height: 53px
+        width: 53px
+        margin-left: 23px
+        margin-right: 30px
+        & *
+          transition: fill 0.3s linear
+          fill: $blue
+    &:hover
+      & label
+        background: $gradient
+        color: $white
+        & svg *
+          fill: $white
+    @media (max-width: 550px)
+      font-size: 14px
+      line-height: 17px
+    @media (max-width: 400px)
+      min-width: 200px
+      & label
+        & svg, & img
+          max-height: 40px !important
+          min-width: 40px
+          max-width: 40px
+          height: 40px
+          width: 40px
+          margin-left: 15px
+          margin-right: 20px
+  &__line
+    height: 1px
+    background-color: #a0a7ab
+  &__bottom
+    position: relative
+    z-index: 1
+    background-color: $white
+    margin-bottom: 60px
+    overflow: hidden
+  &__back
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+    z-index: 0
+    & *
+      transition: fill 0.2s linear
+      fill: rgba(0, 0, 0, 0.1)
+    @media (max-width: 900px)
+      width: auto
+      height: 700px
+    @media (max-width: 670px)
+      display: none
+  &__main
+    padding-top: 50px
+  &__types
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: stretch
+    min-height: 392px
+    @media (max-width: 650px)
+      justify-content: flex-start
+      align-items: center
+      flex-direction: column
+  &__type
+    margin-bottom: 50px
+    border-radius: 15px
+    box-shadow: 5.5px 9.5px 32px 0 rgba(0, 0, 0, 0.26)
+    background-color: $white
+    width: 30%
+    min-width: 300px
+    position: relative
+    padding: 22px 25px
+    margin-right: 15px
+    display: flex
+    flex-direction: column
+    align-items: center
+    transition: all 0.3s linear
+    &:nth-of-type(3n)
+      margin-right: 0
+    &:before
+      content: ''
+      position: absolute
+      background: $gradient
+      border-radius: 15px
+      opacity: 0
+      width: 100%
+      height: calc(100% + 30px)
+      top: -30px
+      left: 0
+      transition: all 0.3s linear
+    &:hover
+      &:before
+        z-index: 1
+        opacity: 1
+      & .services__name
+        top: -30px
+        color: $white
+      & .services__image
+        top: -30px
+      & .services__desc
+        opacity: 1
+        transform: none
+        visibility: visible
+    @media (max-width: 960px)
+      margin-right: 20px
+      &:nth-of-type(3n)
+        margin-right: 20px
+      &:nth-of-type(2n)
+        margin-right: 0
+    @media (max-width: 650px)
+      margin-right: 0
+      &:nth-of-type(3n)
+        margin-right: 0
+    @media (max-width: 400px)
+      min-width: 280px
+      padding: 22px 20px
+  &__name
+    text-align: center
+    font-size: 20px
+    line-height: 25px
+    color: #2c2c2c
+    position: relative
+    top: 0
+    transition: all 0.3s ease
+    z-index: 3
+  &__image
+    margin-top: 20px
+    margin-bottom: 42px
+    position: relative
+    top: 0
+    height: 168px
+    max-width: 250px
+    transition: all 0.3s ease 0.1s
+    z-index: 3
+  &__desc
+    position: relative
+    justify-self: flex-end
+    align-self: flex-end
+    font-family: $bold
+    padding-right: 30px
+    font-size: 15px
+    z-index: 3
+    text-transform: uppercase
+    color: $white
+    background-color: transparent
+    opacity: 0
+    visibility: hidden
+    transform: translateY(100px)
+    display: block
+    transition: all 0.3s ease 0.2s, visibility 0s 0.22s, padding-right 0.3s 0s, padding-left 0.3s 0s
+    &:after
+      content: url('../img/arrow-right-white.png')
+      position: absolute
+      right: 0
+      transition: all 0.3s linear
+    &:hover
+      padding-right: 10px
+      padding-left: 20px
+      &:after
+        opacity: 0
+  &__more
+    display: block
+    border-radius: 33px
+    background-color: transparent
+    font-size: 15px
+    font-family: $bold
+    margin: 0 auto
+    color: #101a44
+    text-transform: uppercase
+    text-decoration: none
+    position: relative
+    width: 271px
+    height: 66px
+    overflow: hidden
+    & > span
+      line-height: 66px
+      position: absolute
+      left: 0
+      top: 0
+      width: 271px
+      height: 66px
+      text-align: center
+      transition: all 0.2s linear
+      &:hover
+        color: $white
+        background: #101a44
+        transition-delay: 0.9s
+    & > svg
+      width: 271px
+      height: 66px
+      & > rect
+        position: absolute
+        top: 0
+        left: 0
+        stroke-width: 3px
+        stroke-dashoffset: 200px
+        stroke: #101a44
+    &:hover rect
+      animation: svg-stroke 1s linear forwards

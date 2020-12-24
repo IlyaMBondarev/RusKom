@@ -1,0 +1,71 @@
+.thanks
+  background-image: linear-gradient(to right, #5f75af 0%, #213467 40%, #213467 60%, #5f75af 100%)
+  flex-grow: 1
+  padding-top: 100px
+  display: flex
+  flex-direction: column
+  &__main
+    flex-grow: 1
+    width: 100%
+    position: relative
+    @media (max-width: 900px)
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+  &__title
+    margin-top: 80px
+    margin-bottom: 20px
+    text-shadow: 1px 1.7px 2px rgba(0, 0, 2, 0.85)
+    font-family: $blackTitles
+    font-size: 7.8rem
+    letter-spacing: 1.95px
+    color: $white
+    text-transform: uppercase
+    @media (max-width: 900px)
+      margin-top: 60px
+    @media (max-width: 550px)
+      font-size: 6rem
+  &__subtitle
+    margin-bottom: 10px
+    text-shadow: 1px 1.7px 2px rgba(0, 0, 2, 0.85)
+    font-family: $boldTitles
+    font-size: 4.25rem
+    letter-spacing: 1.06px
+    color: $white
+  &__content
+    margin-bottom: 30px
+    max-width: 400px
+    text-shadow: 1px 1.7px 2px rgba(0, 0, 2, 0.85)
+    font-size: 3.2rem
+    color: $white
+  &__image
+    position: absolute
+    right: 0
+    top: 33px
+    width: 75%
+    & > img
+      width: 100%
+    @media (max-width: 1023px)
+      width: 50%
+      top: 60px
+    @media (max-width: 900px)
+      position: static
+      margin-bottom: 30px
+      width: 400px
+    @media (max-width: 420px)
+      width: 280px
+  &__button
+    display: flex
+    justify-content: center
+    align-items: center
+    font-family: $bold
+    font-size: 15px
+    color: $white
+    width: 244px
+    height: 44px
+    background-color: $red
+    border-radius: 22px
+    box-shadow: 5.2px 7.4px 8px 0 rgba(0, 0, 0, 0.35)
+    @media (max-width: 900px)
+      margin-bottom: 40px

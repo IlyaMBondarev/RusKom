@@ -1,0 +1,158 @@
+.footer
+  background-color: #e7e7e8
+  padding-top: 45px
+  padding-bottom: 50px
+  @media (max-width: 1023px)
+    padding-bottom: 30px
+  & > .container
+    display: flex
+    justify-content: space-between
+    @media (max-width: 1023px)
+      flex-direction: column
+  &__left
+    margin-right: 45px
+    @media (max-width: 1023px)
+      display: flex
+      justify-content: space-around
+      margin-right: 0
+      margin-bottom: 20px
+    @media (max-width: 700px)
+      flex-direction: column
+      align-items: center
+  &__logo
+    margin-bottom: 16px
+    @media (max-width: 1023px)
+      margin-bottom: 0
+    @media (max-width: 700px)
+      margin-bottom: 20px
+  &__open-map
+    display: block
+    border-radius: 22.5px
+    background-color: transparent
+    font-size: 16px
+    font-family: $bold
+    margin: 0 auto
+    color: $blue
+    text-decoration: none
+    position: relative
+    width: 234px
+    height: 45px
+    overflow: hidden
+    @media (max-width: 1023px)
+      margin: 0
+    & > span
+      line-height: 45px
+      position: absolute
+      left: 0
+      top: 0
+      width: 234px
+      height: 45px
+      text-align: center
+      transition: all 0.2s linear
+      &:hover
+        color: $white
+        background: $blue
+        transition-delay: 0.9s
+    & > svg
+      width: 234px
+      height: 45px
+      & > rect
+        position: absolute
+        top: 0
+        left: 0
+        stroke-width: 3px
+        stroke-dashoffset: 200px
+        stroke: $blue
+    &:hover rect
+      animation: svg-stroke 1s linear forwards
+  &__right
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: stretch
+    @media (max-width: 1200px)
+      flex-direction: row
+    @media (max-width: 1023px)
+      flex-direction: column
+    @media (max-width: 900px)
+      flex-direction: row
+    @media (max-width: 700px)
+      flex-direction: column
+      align-items: center
+  &__row
+    display: flex
+    justify-content: space-between
+    align-items: center
+    @media (max-width: 1200px)
+      flex-direction: column
+    @media (max-width: 1023px)
+      flex-direction: row
+      margin-bottom: 20px
+    @media (max-width: 900px)
+      flex-direction: column
+      margin-bottom: 0
+    @media (max-width: 700px)
+      &:first-of-type
+        border-bottom: 1px solid #a7a0ab
+        margin-bottom: 10px
+  &__address
+    display: flex
+    align-items: center
+    & svg, & img
+      min-width: 25px
+      max-width: 25px
+      height: 25px
+      width: 25px
+      margin-right: 6px
+      & *
+        fill: $blue
+    & span
+      color: #2a2a29
+      font-size: 17px
+    @media (max-width: 900px)
+      margin-bottom: 10px
+    @media (max-width: 700px)
+      justify-content: center
+      width: 220px
+  &__mail
+    display: flex
+    align-items: center
+    & svg, & img
+      min-width: 25px
+      max-width: 25px
+      height: 25px
+      width: 25px
+      margin-right: 6px
+      & *
+        fill: $blue
+    & span
+      color: #2a2a29
+      font-size: 17px
+    @media (max-width: 900px)
+      margin-bottom: 10px
+  &__phone
+    display: flex
+    align-items: center
+    & svg, & img
+      min-width: 25px
+      max-width: 25px
+      height: 25px
+      width: 25px
+      margin-right: 6px
+      & *
+        fill: $blue
+    & span
+      color: #2a2a29
+      font-size: 21px
+      text-transform: uppercase
+      font-family: $bold
+    @media (max-width: 700px)
+      margin-bottom: 10px
+  &__bottom
+    color: #4f4f4f
+    font-size: 14px
+    & a
+      color: #4f4f4f
+    @media (max-width: 700px)
+      margin-bottom: 15px

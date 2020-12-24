@@ -1,0 +1,332 @@
+.faq
+  background: url("../img/bg_9.png") bottom center / cover no-repeat
+  padding-top: 80px
+  padding-bottom: 80px
+  @media (max-width: 550px)
+    padding-top: 50px
+    padding-bottom: 50px
+  &__title
+    color: #2c2c2c
+    font-size: 5rem
+    font-family: $blackTitles
+    line-height: 7rem
+    max-width: 750px
+    text-transform: uppercase
+    @media (max-width: 550px)
+      font-size: 4rem
+      line-height: 5.05rem
+      margin-bottom: 15px
+    @media (max-width: 400px)
+      font-size: 3rem
+      line-height: 4.05rem
+  &__main
+    display: flex
+    justify-content: space-between
+    align-items: stretch
+    margin-top: 36px
+    @media (max-width: 767px)
+      flex-wrap: wrap
+  &__left
+    max-height: 481px
+    max-width: 440px
+    margin-top: -28px
+    margin-bottom: -28px
+    position: relative
+    @media (max-width: 1100px)
+      max-width: 410px
+    @media (max-width: 1000px)
+      max-height: 425px
+    @media (max-width: 767px)
+      flex-grow: 1
+      margin-bottom: 40px
+      max-width: none
+      width: 100%
+  &__arrows
+    position: absolute
+    height: 100%
+    width: 100%
+    left: 0
+    top: 0
+    @media (max-width: 767px)
+      display: none
+  &__arrow
+    background-color: transparent
+    position: absolute
+    left: 173px
+    transition: transform 0.2s ease
+    & svg
+      width: 35px
+      & *
+        fill: #2c2c2c
+    &-up
+      top: 0
+      transform: translateY(-50%) scale(1, -1)
+      &:hover
+        transform: translateY(-50%) scale(1.5, -1.5)
+      &:active
+        transform: translateY(-50%) scale(1, -1)
+    &-down
+      bottom: 0
+      transform: translateY(50%)
+      &:hover
+        transform: translateY(50%) scale(1.5)
+      &:active
+        transform: translateY(50%)
+    @media (max-width: 1100px)
+      left: 135px
+  &__slider
+    max-height: 445px
+    margin-top: 18px
+    padding: 10px 59px 10px 14px
+    margin-bottom: -10px
+    margin-left: -14px
+    overflow: hidden
+    position: relative
+    @media (max-width: 1100px)
+      padding-right: 30px
+    @media (max-width: 1000px)
+      max-height: 390px
+    @media (max-width: 767px)
+      max-height: 275px
+      padding-right: 0
+  &__items
+    display: flex !important
+    flex-direction: column
+    transition: margin-top 0.4s ease
+    @media (max-width: 767px)
+      display: block
+  &__item
+    max-height: 123px
+    height: 123px
+    width: 380px
+    max-width: 380px
+    margin-bottom: 28px
+    user-select: none
+    &-active label
+      box-shadow: 5.5px 9.5px 32px 0 rgba(0, 0, 0, 0.26) !important
+      background-image: $gradient !important
+      & svg, & img
+        & *
+          fill: $white !important
+      & span
+        color: $white !important
+    & input
+      display: none
+      &:checked + label
+        box-shadow: 5.5px 9.5px 32px 0 rgba(0, 0, 0, 0.26)
+        background-image: $gradient
+        & svg, & img
+          & *
+            fill: $white
+        & span
+          color: $white
+    & label
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      max-height: 123px
+      height: 123px
+      width: 380px
+      max-width: 380px
+      padding-left: 32px
+      padding-right: 20px
+      border-radius: 10px
+      box-shadow: 3px 5.2px 9px 0 rgba(0, 0, 0, 0.26)
+      background-color: $white
+      transition: all 0.3s ease
+      cursor: pointer
+      & svg, & img
+        height: 74px
+        width: 74px
+        max-height: 74px
+        flex-shrink: 0
+        margin-right: 30px
+        & *
+          fill: $blue
+          transition: all 0.3s ease
+      & span
+        color: $black
+        font-size: 21px
+        line-height: 28.5px
+        transition: all 0.3s ease
+      &:hover
+        box-shadow: 5.5px 9.5px 32px 0 rgba(0, 0, 0, 0.26)
+        background-image: $gradient
+        & svg, & img
+          & *
+            fill: $white
+        & span
+          color: $white
+    @media (max-width: 1000px)
+      max-height: 100px
+      height: 100px
+      width: 300px
+      max-width: 300px
+      & label
+        max-height: 100px
+        height: 100px
+        width: 300px
+        max-width: 300px
+        padding-left: 15px
+        padding-right: 15px
+        & svg
+          height: 40px
+          max-height: 40px
+          margin-right: 15px
+        & span
+          font-size: 16px
+          line-height: 20px
+    @media (max-width: 767px)
+      max-width: initial
+      width: auto
+      max-height: 70px
+      height: 70px
+      margin-bottom: 20px
+      & label
+        max-width: initial
+        width: auto
+        justify-content: center
+        max-height: 70px
+        height: 70px
+    @media (max-width: 400px)
+      & label
+        & svg
+          height: 35px
+          max-height: 35px
+        & span
+          font-size: 13px
+          line-height: 17px
+  &__center
+    max-width: 2px
+    min-width: 2px
+    background-color: #a0a7ab
+    height: 425px
+    position: relative
+    @media (max-width: 1000px)
+      height: 390px
+    @media (max-width: 767px)
+      display: none
+  &__circle
+    position: absolute
+    left: 50%
+    width: 20px
+    height: 20px
+    transform: translateX(-50%)
+    border: 2px solid #22315d
+    border-radius: 50%
+    background-color: $white
+    transition: background-color 0.4s ease
+    &:nth-of-type(1)
+      top: 51px
+      @media (max-width: 1000px)
+        top: 40px
+    &:nth-of-type(2)
+      top: 202px
+      @media (max-width: 1000px)
+        top: 170px
+    &:nth-of-type(3)
+      bottom: 51px
+      @media (max-width: 1000px)
+        top: 300px
+        bottom: auto
+    &-active
+      background-color: $blue
+  &__right
+    margin-left: 47px
+    padding-right: 59px
+    flex-grow: 1
+    max-height: 425px
+    overflow: hidden
+    position: relative
+    display: none
+    &-active
+      display: block
+    @media (max-width: 1100px)
+      padding-right: 30px
+      margin-left: 30px
+    @media (max-width: 1000px)
+      max-height: 390px
+    @media (max-width: 500px)
+      margin-left: 0
+  &__question
+    margin-bottom: 43px
+    @media (max-width: 1000px)
+      margin-bottom: 30px
+    @media (max-width: 500px)
+      margin-bottom: 20px
+    @media (max-width: 400px)
+      margin-bottom: 15px
+    &-title
+      display: flex
+      align-items: flex-start
+      font-family: $blackTitles
+      font-size: 29px
+      line-height: 35px
+      color: #8c8b8b
+      transition: color 0.5s ease
+      cursor: pointer
+      @media (max-width: 1000px)
+        font-size: 24px
+        line-height: 28px
+      @media (max-width: 500px)
+        font-size: 20px
+        line-height: 24px
+      @media (max-width: 400px)
+        font-size: 18px
+        line-height: 20px
+    &-content
+      margin-left: 37px
+      padding-left: 14px
+      border-left: 5px solid $blue
+      color: #484848
+      font-size: 17.5px
+      line-height: 24px
+      text-align: justify
+      margin-top: 0
+      transition: all 0.45s ease-out
+      max-height: 0
+      opacity: 0
+      transform: scale(0.9) rotateX(-60deg)
+      overflow: hidden
+      @media (max-width: 1000px)
+        font-size: 16px
+        line-height: 20px
+      @media (max-width: 500px)
+        margin-left: 15px
+        padding-left: 10px
+        border-left: 2px solid $blue
+      @media (max-width: 400px)
+        margin-left: 7px
+        padding-left: 7px
+        font-size: 13px
+        line-height: 16px
+    &-active
+      & .faq__question-title
+        color: #3d3d3d
+      & .faq__question-content
+        transform: scale(1) rotateX(0)
+        opacity: 1
+        margin-top: 23px
+        @media (max-width: 500px)
+          margin-top: 15px
+        @media (max-width: 400px)
+          margin-top: 10px
+  &__scrollbar
+    position: relative
+    width: 2px
+    padding-top: 51px
+    padding-bottom: 51px
+    height: 576px
+    background-color: #a0a7ab
+    &-track
+      position: relative
+    &-thumb
+      position: absolute
+      width: 20px
+      height: 20px
+      border-radius: 50%
+      background-color: $blue
+      cursor: pointer
+      top: 0
+      left: 50%
+      transform: translateX(-50%)

@@ -1,0 +1,138 @@
+.traffic
+  padding-top: 60px
+  padding-bottom: 60px
+  background: url("../img/bg_2.png") bottom / contain no-repeat
+  @media (max-width: 600px)
+    padding-top: 30px
+  &__title
+    margin-bottom: 45px
+    font-family: $blackTitles
+    font-size: 5rem
+    line-height: 6rem
+    text-align: center
+    color: #2c2c2c
+    text-transform: uppercase
+    @media (max-width: 550px)
+      font-size: 4rem
+      line-height: 5.05rem
+    @media (max-width: 400px)
+      font-size: 3rem
+      line-height: 4.05rem
+  &__blocks
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    margin-bottom: 10px
+    padding-right: 50px
+    margin-right: -50px
+    max-height: 730px
+    overflow: visible hidden
+    transition: max-height 0.8s ease
+    @media (max-width: 800px)
+      justify-content: space-around
+  &__block
+    margin-bottom: 76px
+    margin-right: 20px
+    position: relative
+    & > img
+      border-radius: 10px
+      box-shadow: 5.5px 9.5px 32px 0 rgba(0, 0, 0, 0.26)
+    &:hover > .traffic__info > span
+      transform: translateY(157%)
+  &__info
+    position: absolute
+    right: -20px
+    bottom: -26px
+    width: 82%
+    min-width: 200px
+    min-height: 243px
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    justify-content: space-between
+    padding: 22px 14px 30px 24px
+    border-radius: 0 10px 10px 0
+    border-left: 4px solid $red
+    box-shadow: 5.5px 9.5px 10px 0 rgba(0, 0, 0, 0.26)
+    background-color: #ffffff
+    overflow: hidden
+    & > span
+      position: absolute
+      left: 5px
+      bottom: 50%
+      width: 1em
+      word-break: break-word
+      color: #eeeeee
+      font-size: 164px
+      font-family: $blackTitles
+      line-height: 80%
+      transform: translateY(57%)
+      user-select: none
+      transition: transform 0.2s linear
+      &:before
+        content: attr(number)
+        position: absolute
+        left: 5px
+        bottom: 50%
+        width: 1em
+        word-break: break-word
+        color: #eeeeee
+        font-size: 164px
+        font-family: $blackTitles
+        line-height: 80%
+        transform: translateY(-50%)
+        user-select: none
+        transition: transform 0.2s linear
+    & svg, & img
+      position: relative
+      z-index: 5
+      height: 110px
+      width: 110px
+      & *
+        fill: $blue
+  &__name
+    position: relative
+    z-index: 5
+    font-size: 20px
+    line-height: 24px
+    color: $black
+    text-align: center
+  &__more
+    display: block
+    border-radius: 33px
+    background-color: transparent
+    font-size: 15px
+    font-family: $bold
+    margin: 0 auto
+    color: #101a44
+    text-transform: uppercase
+    text-decoration: none
+    position: relative
+    width: 271px
+    height: 66px
+    overflow: hidden
+    & > span
+      line-height: 66px
+      position: absolute
+      left: 0
+      top: 0
+      width: 271px
+      height: 66px
+      text-align: center
+      transition: all 0.2s linear
+      &:hover
+        color: $white
+        background: #101a44
+        transition-delay: 0.9s
+    & > svg
+      width: 271px
+      height: 66px
+      & > rect
+        position: absolute
+        top: 0
+        left: 0
+        stroke-width: 3px
+        stroke-dashoffset: 200px
+        stroke: #101a44
+    &:hover rect
+      animation: svg-stroke 1s linear forwards

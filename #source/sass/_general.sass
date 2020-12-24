@@ -1,0 +1,318 @@
+//<шрифты>
+
+//<подключаем шрифты>
+
+@font-face
+  font-family: 'fontTitlesBlack'
+  src: url(../fonts/Mediator-Black.otf)
+
+@font-face
+  font-family: 'fontTitlesBold'
+  src: url(../fonts/Mediator-Bold.otf)
+
+@font-face
+  font-family: 'fontContent'
+  src: url(../fonts/Verdana/verdana.ttf)
+
+@font-face
+  font-family: 'fontContentBold'
+  src: url(../fonts/Verdana/verdanab.ttf)
+
+//</подключаем шрифты>
+
+//<шрифт по умолчанию>
+$fontfamily: "fontContent"
+$bold: "fontContentBold"
+$boldTitles: "fontTitlesBold"
+$blackTitles: "fontTitlesBlack"
+//</шрифт по умолчанию>
+
+//</шрифты>
+
+//<переменные>
+$minwidth: 320px
+$white: #ffffff
+$black: #000000
+$red: #ee1d23
+$blue: #172755
+$gradient: linear-gradient(to top, #0d143b, #162754)
+//</переменные>
+
+//<общие параметры>
+
+.page
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  overflow-anchor: none
+
+.content
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+  overflow: hidden
+  & > div
+    width: 100%
+
+img, svg
+  user-select: none
+
+._error
+  border: 1px solid #ff0f0f !important
+  & + div
+    z-index: 15
+    opacity: 1
+
+.container
+  max-width: 1210px
+  padding: 0 15px
+  margin: 0 auto
+
+.border-bottom
+  position: relative
+  white-space: nowrap
+  &:after
+    position: absolute
+    left: 0
+    width: 100%
+    height: 1px
+    content: ''
+    background-color: $white
+    opacity: 1
+    bottom: 0
+    transition: all 0.2s linear
+  &:hover
+    &:after
+      opacity: 0
+      bottom: -3px
+      &:hover
+        opacity: 1
+        bottom: 0
+
+.border-left
+  position: relative
+  white-space: nowrap
+  transition: all 0.2s linear
+  &:after
+    position: absolute
+    left: -5px
+    width: 2px
+    height: 20px
+    content: ''
+    background-color: $red
+    opacity: 0
+    top: 10px
+    transition: all 0.2s linear
+  &:hover
+    padding-left: 5px
+    &:after
+      opacity: 1
+      left: 0
+
+@keyframes svg-stroke
+  0%
+    stroke-dasharray: 300
+    stroke-dashoffset: 700
+    stroke-width: 4px
+  75%
+    stroke-dasharray: 900
+    stroke-width: 1px
+  100%
+    stroke-dasharray: 900
+    stroke-width: 1px
+
+.svg-animation__back
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+  top: 0
+  width: 100%
+  z-index: 0
+  & *
+    transition: fill 0.2s linear
+    fill: rgba(255, 255, 255, 0.1)
+  @media (max-width: 1190px)
+    width: auto
+    height: 100%
+
+.flare
+  position: relative
+  overflow: hidden
+  &:before
+    content: ""
+    position: absolute
+    top: -50%
+    left: -40%
+    height: 200%
+    width: 20%
+    background: rgba(255, 255, 255, 0.5)
+    transform: rotate(20deg)
+  &:hover:before
+    left: 140%
+    transition: all 0.7s
+
+.slides
+  padding: 0
+  width: 457px
+  height: 331px
+  display: block
+  margin: 0 auto
+  position: relative
+  border-radius: 10px
+  box-shadow: 5.5px 9.5px 32px 0 rgba(0, 0, 0, 0.26)
+  @media (max-width: 900px)
+    width: 400px
+    height: 290px
+  @media (max-width: 500px)
+    width: 290px
+    height: 209px
+  @media (max-width: 400px)
+    width: 228.5px
+    height: 165.5px
+
+.slides *
+  user-select: none
+  -ms-user-select: none
+  -moz-user-select: none
+  -khtml-user-select: none
+  -webkit-user-select: none
+  -webkit-touch-callout: none
+
+.slides input
+  display: none
+
+.slide-container
+  display: block
+
+.slide
+  top: 0
+  opacity: 0
+  width: 457px
+  height: 331px
+  display: block
+  position: absolute
+  transform: scale(0)
+  transition: all .7s ease-in-out
+  border-radius: 10px
+  @media (max-width: 900px)
+    width: 400px
+    height: 290px
+  @media (max-width: 500px)
+    width: 290px
+    height: 209px
+  @media (max-width: 400px)
+    width: 228.5px
+    height: 165.5px
+
+.slide img
+  width: 100%
+  height: 100%
+  border-radius: 10px
+
+.nav label
+  width: 38px
+  height: 38px
+  border-radius: 50%
+  display: none
+  position: absolute
+  z-index: 9
+  top: 50%
+  cursor: pointer
+  transition: opacity .2s
+  justify-content: center
+  align-items: center
+  background-color: $white
+  opacity: 0.8
+
+.nav label:hover
+  opacity: 1
+
+.nav .prev
+  left: 0
+  transform: translate(-50%, -50%)
+  @media (max-width: 500px)
+    transform: translate(-50%, -50%) scale(0.8)
+
+.nav .next
+  right: 0
+  transform: translate(50%, -50%)
+  @media (max-width: 500px)
+    transform: translate(50%, -50%) scale(0.8)
+
+input:checked + .slide-container  .slide
+  opacity: 1
+  transform: scale(1)
+  transition: opacity 1s ease-in-out
+
+input:checked + .slide-container .nav label
+  display: flex
+
+.line
+  height: 113px
+  position: relative
+  overflow: hidden
+  & > img
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.rain
+  transform: rotate(-90deg)
+  height: 1210px
+  width: 100%
+  user-select: none
+  padding-top: 6px
+  &-bg
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 1210px
+    z-index: 2
+    filter: brightness(0.96)
+    overflow: hidden
+    @media (max-width: 1200px)
+      display: none
+  &__row
+    height: 1px
+    margin-bottom: 157px
+    background-color: #64676b
+    position: relative
+  &__text
+    position: absolute
+    color: $white
+    font-size: 12px
+    right: -22%
+    top: 50%
+    transform: translateY(-50%)
+  &__empty
+    display: block
+    width: 7px
+    height: 7px
+    border-radius: 50%
+    box-shadow: 0.6px 0.8px 3px 0 #000000
+    background-color: $white
+    position: absolute
+    left: -63px
+    top: 50%
+    transform: translateY(-50%)
+    &:before
+      content: ''
+      display: block
+      width: 58px
+      height: 1px
+      box-shadow: 0.6px 0.8px 3px 0 #000000
+      background-color: $white
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+
+//<общие параметры>
+
+
+//<основной блок>
+
+//</основной блок>
+

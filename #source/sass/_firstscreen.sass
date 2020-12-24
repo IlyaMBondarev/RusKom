@@ -1,0 +1,123 @@
+.first-screen
+  flex: 0 0 674px
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  padding-top: 100px
+  @media (max-width: 1070px)
+    flex: 0 0 auto
+    min-height: 550px
+  @media (max-width: 850px)
+    min-height: 500px
+  @media (max-width: 550px)
+    min-height: 400px
+  &__bg
+    height: 100%
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    top: 0
+    filter: brightness(0.5)
+    z-index: 1
+    @media (max-width: 1070px)
+      height: 550px
+      left: 0
+      transform: translateX(-350px)
+    @media (max-width: 850px)
+      transform: translateX(-300px)
+      height: 500px
+    @media (max-width: 550px)
+      height: 400px
+      transform: translateX(-240px)
+  &__block
+    display: flex
+    justify-content: space-between
+    z-index: 2
+    @media (max-width: 1200px)
+      flex-grow: 1
+  &__left
+    flex-grow: 1
+  &__title
+    margin-top: 60px
+    font-size: 5.3rem
+    line-height: 7.05rem
+    font-family: $blackTitles
+    letter-spacing: 1.33px
+    text-shadow: 1px 1.7px 2px rgba(0, 0, 2, 0.85)
+    color: $white
+    text-transform: uppercase
+    @media (max-width: 1200px)
+      margin-top: 80px
+    @media (max-width: 550px)
+      font-size: 4rem
+      line-height: 5.05rem
+      margin-top: 20px
+  &__subtitle
+    margin-top: 10px
+    font-size: 4.7rem
+    line-height: 100%
+    font-family: $boldTitles
+    letter-spacing: 1.18px
+    text-shadow: 1px 1.7px 2px rgba(0, 0, 2, 0.85)
+    color: $white
+    text-transform: uppercase
+    @media (max-width: 550px)
+      font-size: 3.5rem
+  &__content
+    margin-top: 10px
+    font-size: 3.55rem
+    line-height: 100%
+    text-shadow: 1px 1.7px 2px rgba(0, 0, 2, 0.85)
+    color: $white
+    @media (max-width: 550px)
+      font-size: 3rem
+  &__right
+    margin-right: -77px
+    @media (max-width: 1200px)
+      position: absolute
+      right: 0
+      bottom: 0
+    @media (max-width: 1120px)
+      display: none
+  &__advantages
+    position: absolute
+    bottom: 0
+    transform: translateY(calc(50% - 75px))
+    z-index: 3
+    display: flex
+    border-radius: 10px
+    justify-content: flex-start
+    align-items: stretch
+    background-color: transparent
+    width: fit-content
+    @media (max-width: 1070px)
+      display: none
+    &-block
+      padding: 14px 20px 30px 23px
+      border-radius: 10px
+      max-width: 260px
+      background-color: $white
+      border-right: 1px solid #eceaea
+      box-shadow: 17.3px 9px 21px 0 rgba(0, 0, 0, 0.26)
+      transition: all 0.2s linear
+      &:first-of-type
+        margin-left: 0
+      &:last-of-type
+        border-right: none
+      &:hover
+        z-index: 2
+        box-shadow: 6.3px 9px 32px 0 rgba(0, 0, 0, 0.26)
+    &-title
+      display: block
+      padding-left: 10px
+      border-left: 4px solid $red
+      font-family: $bold
+      font-size: 1.7rem
+      line-height: 2.05rem
+      color: #302f2f
+    &-content
+      margin-top: 10px
+      font-size: 1.7rem
+      line-height: 2.35rem
+      color: #535353

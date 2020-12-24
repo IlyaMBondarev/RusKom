@@ -1,0 +1,39 @@
+.advantages
+  display: none
+  justify-content: space-around
+  align-items: stretch
+  z-index: 3
+  background-color: transparent
+  margin-top: -50px
+  flex-wrap: wrap
+  @media (max-width: 1070px)
+    display: flex
+  &__block
+    padding: 14px 20px 30px 23px
+    border-radius: 10px
+    max-width: 260px
+    margin-left: 30px
+    margin-right: 30px
+    margin-bottom: 30px
+    background-color: $white
+    box-shadow: 17.3px 9px 21px 0 rgba(0, 0, 0, 0.26)
+    transition: all 0.2s linear
+    &:hover
+      z-index: 2
+      box-shadow: 6.3px 9px 32px 0 rgba(0, 0, 0, 0.26)
+    @media (max-width: 700px)
+      margin-left: 5px
+      margin-right: 5px
+  &__title
+    display: block
+    padding-left: 10px
+    border-left: 4px solid $red
+    font-family: $bold
+    font-size: 17px
+    line-height: 20.5px
+    color: #302f2f
+  &__content
+    margin-top: 10px
+    font-size: 17px
+    line-height: 23.5px
+    color: #535353

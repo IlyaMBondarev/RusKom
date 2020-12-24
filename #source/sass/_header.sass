@@ -1,0 +1,253 @@
+.header
+  white-space: nowrap
+  padding-top: 20px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  position: relative
+  z-index: 50
+  margin-bottom: -80px
+  &__menu-btn
+    display: flex
+    align-items: center
+    background-color: transparent
+    cursor: pointer
+  &__menu-icon
+    width: 32px
+    height: 32px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    margin-right: 10px
+    & > span
+      display: block
+      width: 8px
+      height: 8px
+      background-color: $red
+      position: relative
+      &:before, &:after
+        content: ''
+        position: absolute
+        width: 8px
+        height: 8px
+        background-color: $red
+        top: 0
+      &:before
+        left: -150%
+      &:after
+        right: -150%
+  &__menu-name
+    font-size: 3.05rem
+    font-family: $bold
+    color: $white
+  &__center
+    @media (max-width: 450px)
+      width: 150px
+  &__logo
+    & > img
+      @media (max-width: 450px)
+        width: 100%
+  &__logo-bottom
+    color: $white
+    padding-left: 94px
+    padding-top: 3px
+    font-size: 13.5px
+    text-transform: uppercase
+    @media (max-width: 670px)
+      padding-left: 0
+      text-align: right
+    @media (max-width: 450px)
+      white-space: normal
+      line-height: 16px
+  &__right
+    display: flex
+    align-items: center
+    @media (max-width: 600px)
+      display: none
+  &__column
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: flex-end
+    height: 60px
+    margin-right: 16px
+  &__social-links
+    display: flex
+  &__social-link
+    display: flex
+    align-items: center
+    &:after
+      content: '/'
+      margin-left: 5px
+      margin-right: 5px
+      color: $white
+    &:last-of-type:after
+      display: none
+    & > svg, & > img
+      height: 20px
+      width: 20px
+      margin-right: 7px
+      transition: transform 0.2s linear
+      & *
+        fill: $white
+    & > span
+      color: $white
+      text-transform: uppercase
+    &:hover > svg
+      transform: scale(1.25)
+    @media (max-width: 800px)
+      display: none
+  &__mobile-social-links
+    display: none
+    @media (max-width: 800px)
+      display: flex
+      justify-content: flex-end
+      align-items: center
+  &__mobile-social-link
+    margin-left: 10px
+    & > svg, & > img
+      max-height: 20px
+      min-width: 20px
+      max-width: 20px
+      height: 20px
+      width: 20px
+  &__phone
+    font-family: $blackTitles
+    color: $white
+    font-size: 30.5px
+    line-height: 100%
+    @media (max-width: 800px)
+      font-size: 20px
+  &__callback-btn
+    display: block
+    border-radius: 22px
+    padding: 13px 22px
+    box-shadow: 4.5px 7.8px 8px 0 rgba(0, 0, 0, 0.35)
+    background-color: $red
+    font-size: 15px
+    font-family: $bold
+    text-align: center
+    color: #ffffff
+    @media (max-width: 1000px)
+      display: none
+
+.burger
+  position: absolute
+  transform: translateY(-100%)
+  top: -100%
+  left: 0
+  z-index: 100
+  background-color: #162652
+  box-shadow: 6.5px 8.9px 20.6px 0.4px rgba(0, 0, 0, 0.1)
+  padding: 26px
+  max-width: 280px
+  transition: all 0.4s ease
+  &-opened
+    top: 0
+    transform: translateY(0)
+  &__close
+    top: 14px
+    right: 14px
+    position: absolute
+    cursor: pointer
+    background-color: transparent
+    & svg, & img
+      width: 14px
+      height: 14px
+      transition: all 0.2s linear
+      & *
+        transition: all 0.2s linear
+        fill: #6a6c74
+    &:hover svg
+      transform: rotate(90deg)
+      & *
+        fill: $white
+  &__menu
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    margin-bottom: 20px
+    & li
+      color: $white
+      display: block
+      padding: 14px 0
+      border-bottom: 1px solid $white
+      cursor: pointer
+  &__phone
+    display: flex
+    align-items: center
+    margin-bottom: 25px
+    white-space: normal
+    & svg, & img
+      width: 22px
+      height: 22px
+      min-width: 22px
+      min-height: 22px
+      margin-right: 6px
+      & *
+        fill: $red
+    & span
+      color: $white
+      font-size: 19px
+      text-transform: uppercase
+      font-family: $bold
+  &__mail
+    display: flex
+    align-items: center
+    margin-bottom: 25px
+    white-space: normal
+    & svg, & img
+      width: 22px
+      height: 22px
+      min-width: 22px
+      min-height: 22px
+      margin-right: 6px
+      & *
+        fill: $red
+    & span
+      color: $white
+      font-size: 17px
+  &__address
+    display: flex
+    align-items: center
+    white-space: normal
+    & svg, & img
+      width: 22px
+      height: 22px
+      min-width: 22px
+      min-height: 22px
+      margin-right: 6px
+      & *
+        fill: $red
+    & span
+      color: $white
+      font-size: 17px
+
+.header-sticky
+  background-color: rgba(255, 255, 255, 0.8)
+  padding-bottom: 20px
+  position: fixed
+  left: 50%
+  width: 100%
+  top: -100%
+  z-index: 500
+  transform: translateX(-50%)
+  transition: top 0.5s ease
+  margin-bottom: 0
+  & > .container
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+    position: relative
+  & .header__menu-name,
+  & .header__logo-bottom,
+  & .header__social-link > span,
+  & .header__social-link:after,
+  & .header__phone
+    color: #2a2a29
+  & .header__social-link > svg *
+    fill: #2a2a29
+  & .header__callback-btn
+    box-shadow: 5.2px 7.4px 8px 0 rgba(0, 0, 0, 0.35)

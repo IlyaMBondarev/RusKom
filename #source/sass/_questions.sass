@@ -1,0 +1,160 @@
+.questions
+  background-color: $blue
+  padding: 50px 0 56px 0
+  position: relative
+  overflow: hidden
+  @media (max-width: 767px)
+    padding: 30px 0 30px 0
+  & > .container
+    position: relative
+  &__title
+    max-width: 1120px
+    margin: 0 auto
+    font-size: 5rem
+    font-family: $blackTitles
+    line-height: 7rem
+    text-align: center
+    color: $white
+    text-transform: uppercase
+    @media (max-width: 550px)
+      font-size: 4rem
+      line-height: 5.05rem
+    @media (max-width: 400px)
+      font-size: 3rem
+      line-height: 4.05rem
+  &__subtitle
+    font-size: 3.05rem
+    line-height: 100%
+    text-align: center
+    color: $white
+    text-transform: uppercase
+    @media (max-width: 550px)
+      font-size: 2.5rem
+      line-height: 2.9rem
+  &__form
+    margin-top: 48px
+    margin-bottom: 8px
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    @media (max-width: 1190px)
+      justify-content: space-around
+    @media (max-width: 767px)
+      margin-top: 20px
+    & > button
+      margin-bottom: 48px
+      width: 30%
+      height: 86px
+      min-width: 350px
+      font-size: 24px
+      font-family: $bold
+      color: $white
+      text-align: center
+      background-color: $red
+      border-radius: 43px
+      box-shadow: 4.5px 7.8px 8px 0 rgba(0, 0, 0, 0.35)
+      @media (max-width: 767px)
+        height: 50px
+        font-size: 18px
+        min-width: 288px
+        margin-bottom: 30px
+  &__block
+    margin-bottom: 48px
+    width: 30%
+    min-width: 350px
+    position: relative
+    @media (max-width: 767px)
+      min-width: 288px
+      margin-bottom: 30px
+    & input
+      padding: 31px 40px
+      border-radius: 43px
+      box-shadow: 4.5px 7.8px 8px 0 rgba(0, 0, 0, 0.35)
+      background-color: $white
+      font-size: 20px
+      color: $black
+      width: 100%
+      &::placeholder
+        font-size: 20px
+        color: $black
+      &[type=file]
+        display: none
+        & + label
+          display: flex
+          align-items: center
+          justify-content: flex-start
+          cursor: pointer
+          padding: 29px 40px 30px
+          border-radius: 43px
+          box-shadow: 4.5px 7.8px 8px 0 rgba(0, 0, 0, 0.35)
+          background-color: $white
+          font-size: 20px
+          color: $black
+          width: 100%
+          & svg
+            height: 27px
+            & *
+              fill: $black
+      @media (max-width: 767px)
+        padding: 16px 40px
+        font-size: 14px
+        &::placeholder
+          font-size: 14px
+        &[type=file]
+          & + label
+            padding: 14px 40px 15px
+            font-size: 14px
+            & svg
+              height: 20px
+  &__error
+    display: flex
+    align-items: center
+    padding: 9px 19px 9px 9px
+    position: absolute
+    left: 50%
+    bottom: 105%
+    transform: translateX(-50%)
+    border-radius: 10px
+    box-shadow: 4.5px 7.8px 8px 0 rgba(0, 0, 0, 0.35)
+    background-color: #e3e1e1
+    z-index: 15
+    user-select: none
+    opacity: 0
+    transition: opacity 0.3s linear
+    &:before
+      content: ''
+      position: absolute
+      left: 15px
+      top: 100%
+      border-top: 10px solid #e3e1e1
+      border-left: 10px solid transparent
+      border-right: 10px solid transparent
+      width: 20px
+      height: 20px
+      background-color: transparent
+    & > div
+      width: 26px
+      height: 26px
+      border-radius: 5px
+      background-color: #f97c28
+      margin-right: 10px
+      display: flex
+      justify-content: center
+      align-items: center
+      & svg, & img
+        height: 18px
+        width: 18px
+        & *
+          fill: $white
+    & > span
+      font-size: 14.5px
+      color: #2a2a2a
+      line-height: 100%
+      white-space: nowrap
+  &__bottom
+    color: $white
+    font-size: 1.8rem
+    line-height: 100%
+    text-align: center
+    & a
+      color: $white
