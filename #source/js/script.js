@@ -565,23 +565,22 @@ if ($('.faq').length) {
             for (let j = 0; j < questionsBlocks.length; j++) {
                 if (items[i].dataset.number === questionsBlocks[j].dataset.number) {
                     questionsBlocks[j].classList.add('faq__right-active');
+                    let questions = questionsBlocks[i].querySelectorAll('.faq__question');
+                    ps[i] = new PerfectScrollbar(questionsBlocks[i], {
+                        wheelSpeed: 1,
+                        wheelPropagation: false,
+                        minScrollbarLength: 20,
+                        maxScrollbarLength: 20
+                    });
+                    for (let indexOfQuestion = 0; indexOfQuestion < questions.length; indexOfQuestion++) {
+                        let content = questions[indexOfQuestion].querySelector('.faq__question-content');
+                        let contentHeight = content.scrollHeight;
+                        if (questions[indexOfQuestion].classList.contains('faq__question-active')) {
+                            content.style.maxHeight = `${contentHeight}px`;
+                            setTimeout(() => {ps[i].update();}, 450);
+                        }
+                    }
                     break;
-                }
-            }
-
-            let questions = questionsBlocks[i].querySelectorAll('.faq__question');
-            ps[i] = new PerfectScrollbar(questionsBlocks[i], {
-                wheelSpeed: 1,
-                wheelPropagation: false,
-                minScrollbarLength: 20,
-                maxScrollbarLength: 20
-            });
-            for (let indexOfQuestion = 0; indexOfQuestion < questions.length; indexOfQuestion++) {
-                let content = questions[indexOfQuestion].querySelector('.faq__question-content');
-                let contentHeight = content.scrollHeight;
-                if (questions[indexOfQuestion].classList.contains('faq__question-active')) {
-                    content.style.maxHeight = `${contentHeight}px`;
-                    setTimeout(() => {ps[i].update();}, 450);
                 }
             }
         });
