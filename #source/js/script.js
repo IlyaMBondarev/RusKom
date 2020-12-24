@@ -19,72 +19,6 @@ $('img.img-svg').each(function(){
     }, 'xml');
 });
 
-// анимация svg под формой
-
-if ($('.svg-animation__back').length && document.documentElement.clientWidth > 767) {
-    let svgs = document.querySelectorAll('.svg-animation__back');
-    let width = document.documentElement.offsetWidth;
-
-    svgs.forEach(svg => {
-
-        let paths = svg.querySelectorAll('path');
-        let pathsWidth = paths[0].getBoundingClientRect().width;
-        let columns = Math.ceil(width / pathsWidth) / 2;
-        let pathsX = [];
-
-        for (let i = 0; i < paths.length; i++) {
-            pathsX.push({})
-            pathsX[i].id = i;
-            pathsX[i].x = paths[i].getBoundingClientRect().x;
-        }
-
-        pathsX.sort(function (a, b) {
-            return a.x - b.x;
-        });
-
-        pathsX.forEach(pathX => {
-            for (let i = 0; i < columns; i++) {
-                if (pathX.x >= (i * columns) && pathX.x < ((i + 1) * columns)) {
-                    pathX.turn = i;
-                }
-            }
-        })
-
-        for (let i = 0; i < pathsX.length; i++) {
-            setTimeout(() => {
-                paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.3)';
-            }, 100 * pathsX[i].turn)
-            setTimeout(() => {
-                paths[pathsX[i].id].style.fill = '';
-            }, 100 * pathsX[i].turn + 1000)
-        }
-
-        setInterval(() => {
-            for (let i = 0; i < pathsX.length; i++) {
-                setTimeout(() => {
-                    paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.3)';
-                }, 100 * pathsX[i].turn)
-                setTimeout(() => {
-                    paths[pathsX[i].id].style.fill = '';
-                }, 100 * pathsX[i].turn + 1000)
-            }
-        }, 50 * columns + 1000)
-
-        /*
-        * другая анимация - поочередно слева направо меняет цвет кружкам
-
-        setInterval(() => {
-            for (let i = 0; i < pathsX.length; i++) {
-                setTimeout(() => {
-                    paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.4)';
-                }, i)
-                setTimeout(() => {
-                    paths[pathsX[i].id].style.fill = ''
-                }, i + 1000)
-            }
-        }, paths.length)*/
-    });
-}
 
 // горизонтально едущие машины
 
@@ -628,3 +562,72 @@ if ($('.faq').length) {
     }
 }
 
+
+// анимация svg под формой
+setTimeout(() => {
+    if ($('.svg-animation__back').length && document.documentElement.clientWidth > 767) {
+
+        let svgs = document.querySelectorAll('.svg-animation__back');
+        let width = document.documentElement.offsetWidth;
+
+        svgs.forEach(svg => {
+
+            let paths = svg.querySelectorAll('path');
+            let pathsWidth = paths[0].getBoundingClientRect().width;
+            let columns = Math.ceil(width / pathsWidth) / 2;
+            let pathsX = [];
+
+            for (let i = 0; i < paths.length; i++) {
+                pathsX.push({})
+                pathsX[i].id = i;
+                pathsX[i].x = paths[i].getBoundingClientRect().x;
+            }
+
+            pathsX.sort(function (a, b) {
+                return a.x - b.x;
+            });
+
+            pathsX.forEach(pathX => {
+                for (let i = 0; i < columns; i++) {
+                    if (pathX.x >= (i * columns) && pathX.x < ((i + 1) * columns)) {
+                        pathX.turn = i;
+                    }
+                }
+            })
+
+            for (let i = 0; i < pathsX.length; i++) {
+                setTimeout(() => {
+                    paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.3)';
+                }, 100 * pathsX[i].turn)
+                setTimeout(() => {
+                    paths[pathsX[i].id].style.fill = '';
+                }, 100 * pathsX[i].turn + 1000)
+            }
+
+            setInterval(() => {
+                for (let i = 0; i < pathsX.length; i++) {
+                    setTimeout(() => {
+                        paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.3)';
+                    }, 100 * pathsX[i].turn)
+                    setTimeout(() => {
+                        paths[pathsX[i].id].style.fill = '';
+                    }, 100 * pathsX[i].turn + 1000)
+                }
+            }, 50 * columns + 1000)
+
+            /*
+            * другая анимация - поочередно слева направо меняет цвет кружкам
+
+            setInterval(() => {
+                for (let i = 0; i < pathsX.length; i++) {
+                    setTimeout(() => {
+                        paths[pathsX[i].id].style.fill = 'rgba(255,255,255,0.4)';
+                    }, i)
+                    setTimeout(() => {
+                        paths[pathsX[i].id].style.fill = ''
+                    }, i + 1000)
+                }
+            }, paths.length)*/
+        });
+    }
+}, 2000)
